@@ -82,6 +82,7 @@ public class RegisterActivity extends Activity {
 				System.out.println("set up");
 				//AsyncTaskRunner runner = new AsyncTaskRunner();
 				//runner.execute();
+				finish();
 				Intent intent = new Intent (getApplicationContext(), HomeScreenActivity.class);
 			    startActivity(intent);
 				// saveUser(v);

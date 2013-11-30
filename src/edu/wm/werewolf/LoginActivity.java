@@ -38,6 +38,7 @@ public class LoginActivity extends Activity {
 			public void onClick(View v) {
 				System.out.println("register");
 				Intent intent = new Intent (getApplicationContext(), RegisterActivity.class);
+				finish();
 			    startActivity(intent);
 			}
 		});

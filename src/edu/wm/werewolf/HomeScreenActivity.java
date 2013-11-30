@@ -60,6 +60,7 @@ public class HomeScreenActivity extends Activity {
 			public void onClick(View v) {
 				System.out.println("log out");
 				Intent intent = new Intent (getApplicationContext(), LoginActivity.class);
+				finish();
 			    startActivity(intent);
 			}
 		});
