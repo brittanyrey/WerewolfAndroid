@@ -80,12 +80,16 @@ public class RegisterActivity extends Activity {
 		registerButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				System.out.println("set up");
-				//AsyncTaskRunner runner = new AsyncTaskRunner();
-				//runner.execute();
-				finish();
+				AsyncTaskRunner runner = new AsyncTaskRunner();
+				runner.execute();
+				saveUser(v);
+				
 				Intent intent = new Intent (getApplicationContext(), HomeScreenActivity.class);
+				intent.putExtra("username", usernameText.getText().toString());
+				intent.putExtra("password", passwordText.getText().toString());
+				finish();
 			    startActivity(intent);
-				// saveUser(v);
+				
 			}
 		});
 	}
@@ -131,63 +135,6 @@ public class RegisterActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			publishProgress("Sleeping..."); // Calls onProgressUpdate()
-			// try {
-			// // Do your long operations here and return the result
-			// int time = Integer.parseInt(params[0]);
-			// // Sleeping for given time period
-			// Thread.sleep(time);
-			// resp = "Slept for " + time + " milliseconds";
-			// } catch (InterruptedException e) {
-			// e.printStackTrace();
-			// resp = e.getMessage();
-			// } catch (Exception e) {
-			// e.printStackTrace();
-			// resp = e.getMessage();
-			// }
-
-			// HttpClient client = new DefaultHttpClient();
-			// HttpPost post = new
-			// HttpPost("http://mighty-sea-1005.herokuapp.com/addUser/");
-
-			// List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-			// pairs.add(new BasicNameValuePair("id",
-			// usernameText.getText().toString()));
-			// pairs.add(new BasicNameValuePair("firstName",
-			// firstNameText.getText().toString()));
-			// pairs.add(new BasicNameValuePair("lastName",
-			// lastNameText.getText().toString()));
-			// pairs.add(new BasicNameValuePair("username",
-			// usernameText.getText().toString()));
-			// pairs.add(new BasicNameValuePair("hashedPassword",
-			// passwordText.getText().toString()));
-			// pairs.add(new BasicNameValuePair("imageURL",
-			// "http://i44.tinypic.com/9u3j4o.jpg"));
-			// pairs.add(new BasicNameValuePair("isAdmin", "true"));
-			//
-			// try {
-			// HttpClient httpclient = createHttpClient();
-			// HttpPost httppost = new
-			// HttpPost("http://mighty-sea-1005.herokuapp.com/addUser/");
-			// httppost.getParams().setBooleanParameter(
-			// "http.protocol.expect-continue", false );
-			// httppost.setEntity(new UrlEncodedFormEntity(pairs));
-			// HttpResponse response = httpclient.execute(httppost);
-			//
-			// // post.setEntity(new UrlEncodedFormEntity(pairs));
-			// // HttpResponse response = client.execute(post);
-			// System.out.println(response.getStatusLine().toString());
-			// } catch (UnsupportedEncodingException e) {
-			// e.printStackTrace();
-			// } catch (ClientProtocolException e) {
-			// e.printStackTrace();
-			// } catch (IOException e) {
-			// e.printStackTrace();
-			// }
-			// catch (Exception e)
-			// {
-			// System.out.println("last exception");
-			// e.printStackTrace();
-			// }
 
 			username = usernameText.getText().toString();
 			firstName = firstNameText.getText().toString();
@@ -218,6 +165,8 @@ public class RegisterActivity extends Activity {
 
 				data += "&" + URLEncoder.encode("isAdmin", "UTF-8") + "="
 						+ URLEncoder.encode(isAdmin, "UTF-8");
+				
+				System.out.println(data);
 
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block

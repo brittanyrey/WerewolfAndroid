@@ -39,11 +39,8 @@ public class PlayerListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.player_list_screen);
 
-
 		finalList = new ArrayList<String>();
 		lv = (ListView) findViewById(R.id.listView1);
-		// Instanciating an array list (you don't need to do this, you already
-		// have yours)
 		
 		Thread thread = new Thread(new Runnable(){
 		    @Override

@@ -52,6 +52,9 @@ public class LoginActivity extends Activity {
 				// either error msg or go to home screen
 
 				Intent intent = new Intent (getApplicationContext(), HomeScreenActivity.class);
+				intent.putExtra("username", usernameText.getText().toString());
+				intent.putExtra("password", passwordText.getText().toString());
+				finish();
 			    startActivity(intent);
 			}
 		});

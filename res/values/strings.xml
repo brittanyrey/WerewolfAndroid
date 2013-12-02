@@ -21,5 +21,6 @@
     <string name="statsTitle">Stats For: </string>
     <string name="numKills">Number Of Kills: </string>
     <string name="playerType">Player Type:</string>
+    <string name="enterTime">Enter time for each Day/Night cycle (in minutes):</string>
 
 </resources>

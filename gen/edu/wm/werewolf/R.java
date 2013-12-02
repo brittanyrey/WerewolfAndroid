@@ -28,20 +28,21 @@ public final class R {
     }
     public static final class id {
         public static final int TableLayout1=0x7f080012;
-        public static final int action_settings=0x7f08001e;
+        public static final int action_settings=0x7f080020;
         public static final int createButton=0x7f080014;
         public static final int dayNightCycle=0x7f080001;
-        public static final int firstName=0x7f080019;
-        public static final int lastName=0x7f08001b;
-        public static final int listView1=0x7f080016;
+        public static final int duration=0x7f080017;
+        public static final int firstName=0x7f08001b;
+        public static final int lastName=0x7f08001d;
+        public static final int listView1=0x7f080018;
         public static final int loginButton=0x7f080015;
         public static final int logout=0x7f080011;
         public static final int newGame=0x7f080010;
         public static final int numDaysAlive=0x7f080007;
-        public static final int numberOfKills=0x7f08001d;
+        public static final int numberOfKills=0x7f08001f;
         public static final int password=0x7f080013;
         public static final int playerList=0x7f08000c;
-        public static final int playerType=0x7f08001c;
+        public static final int playerType=0x7f08001e;
         public static final int stats=0x7f08000e;
         public static final int tableRow1=0x7f080002;
         public static final int tableRow2=0x7f080005;
@@ -53,18 +54,20 @@ public final class R {
         public static final int textView1=0x7f080003;
         public static final int textView2=0x7f080006;
         public static final int textView3=0x7f080009;
-        public static final int textView4=0x7f080018;
-        public static final int textView5=0x7f08001a;
+        public static final int textView4=0x7f08001a;
+        public static final int textView5=0x7f08001c;
+        public static final int timeCycle=0x7f080016;
         public static final int timeOfDay=0x7f08000a;
         public static final int username=0x7f080004;
-        public static final int verifyPassword=0x7f080017;
+        public static final int verifyPassword=0x7f080019;
     }
     public static final class layout {
         public static final int home_screen=0x7f030000;
         public static final int login_screen=0x7f030001;
-        public static final int player_list_screen=0x7f030002;
-        public static final int register_screen=0x7f030003;
-        public static final int stats_screen=0x7f030004;
+        public static final int new_game_screen=0x7f030002;
+        public static final int player_list_screen=0x7f030003;
+        public static final int register_screen=0x7f030004;
+        public static final int stats_screen=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -73,6 +76,7 @@ public final class R {
         public static final int TimeOfDay=0x7f05000d;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int enterTime=0x7f050014;
         public static final int firstName=0x7f050007;
         public static final int hello_world=0x7f050002;
         public static final int lastName=0x7f050008;

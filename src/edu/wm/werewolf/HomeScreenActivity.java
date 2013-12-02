@@ -28,8 +28,10 @@ public class HomeScreenActivity extends Activity {
 	private ImageView dayNightPhoto;
 
 	private String username = "userbase";
+	private String password = "password";
 	private String numDays = "numbase";
 	private String timeOfDays = "timebase";
+	private boolean isAdmin;
 	
 	
 	@Override
@@ -37,15 +39,20 @@ public class HomeScreenActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		getWindow().setFormat(PixelFormat.RGBA_8888);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
-		
 		setContentView(R.layout.home_screen);
+		
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    username = extras.getString("username");
+		    password = extras.getString("password");
+		}
 		
 		usernameText = (TextView) findViewById(R.id.username);
 		numDaysText = (TextView) findViewById(R.id.numDaysAlive);
 		timeOfDayText = (TextView) findViewById(R.id.timeOfDay);
 		dayNightPhoto = (ImageView) findViewById(R.id.dayNightCycle);
 		logOutButton = (Button) findViewById(R.id.logout);
-		newGameButton = (Button) findViewById(R.id.newGame); //TODO make invisible for non admins
+		newGameButton = (Button) findViewById(R.id.newGame); 
 		statsButton = (Button) findViewById(R.id.stats);
 		playerListButton = (Button) findViewById(R.id.playerList);
 		
@@ -55,6 +62,10 @@ public class HomeScreenActivity extends Activity {
 		timeOfDayText.setText(timeOfDays);
 		
 		setPhoto();
+		
+		if (false){ ////TODO make invisible for non admins
+			newGameButton.setVisibility(8);
+		}
 		
 		logOutButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -70,8 +81,10 @@ public class HomeScreenActivity extends Activity {
 
 				if (true)//TODO admin
 				{
-//					Intent intent = new Intent (getApplicationContext(), Activity.class);
-//				    startActivity(intent);
+					Intent intent = new Intent (getApplicationContext(), NewGameActivity.class);
+					intent.putExtra("username", username);
+					intent.putExtra("password", password);
+				    startActivity(intent);
 				}
 				
 			}
@@ -80,6 +93,8 @@ public class HomeScreenActivity extends Activity {
 			public void onClick(View v) {
 				System.out.println("stats");
 				Intent intent = new Intent (getApplicationContext(), StatsActivity.class);
+				intent.putExtra("username", username);
+				intent.putExtra("password", password);
 			    startActivity(intent);
 			}
 		});
@@ -87,13 +102,15 @@ public class HomeScreenActivity extends Activity {
 			public void onClick(View v) {
 				System.out.println("player list");
 				Intent intent = new Intent (getApplicationContext(), PlayerListActivity.class);
+				intent.putExtra("username", username);
+				intent.putExtra("password", password);
 			    startActivity(intent);
 			}
 		});
 	}
 	
 	public void setPhoto(){
-		if (true){//TODO if is night
+		if (true){//TODO if is night, make get called isNight
 			dayNightPhoto.setImageResource(R.drawable.nighttime);
 		}
 		else{

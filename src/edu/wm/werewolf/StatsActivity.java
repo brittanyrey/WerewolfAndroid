@@ -10,11 +10,19 @@ import android.widget.Toast;
 
 public class StatsActivity extends Activity {
 	
+	private String username = "userbase";
+	private String password = "password";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.stats_screen);
 		
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    username = extras.getString("username");
+		    password = extras.getString("password");
+		}
 		
 		
 	}
