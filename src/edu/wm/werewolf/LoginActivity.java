@@ -50,10 +50,12 @@ public class LoginActivity extends Activity {
 				// login call post
 				// validate 
 				// either error msg or go to home screen
+				// return if success & isAdmin
 
 				Intent intent = new Intent (getApplicationContext(), HomeScreenActivity.class);
 				intent.putExtra("username", usernameText.getText().toString());
 				intent.putExtra("password", passwordText.getText().toString());
+				intent.putExtra("isAdmin", true); //TODO get from response
 				finish();
 			    startActivity(intent);
 			}

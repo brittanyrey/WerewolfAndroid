@@ -87,6 +87,7 @@ public class RegisterActivity extends Activity {
 				Intent intent = new Intent (getApplicationContext(), HomeScreenActivity.class);
 				intent.putExtra("username", usernameText.getText().toString());
 				intent.putExtra("password", passwordText.getText().toString());
+				intent.putExtra("isAdmin", true); //TODO get from response + isWerewolf
 				finish();
 			    startActivity(intent);
 				
@@ -123,7 +124,6 @@ public class RegisterActivity extends Activity {
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		outState.putString("username", username);
 	}
@@ -169,7 +169,6 @@ public class RegisterActivity extends Activity {
 				System.out.println(data);
 
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -221,24 +220,6 @@ public class RegisterActivity extends Activity {
 			System.out.println(text);
 
 			return resp;
-		}
-
-		private HttpClient createHttpClient() {
-			HttpParams params = new BasicHttpParams();
-			HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-			HttpProtocolParams.setContentCharset(params,
-					HTTP.DEFAULT_CONTENT_CHARSET);
-			HttpProtocolParams.setUseExpectContinue(params, true);
-
-			SchemeRegistry schReg = new SchemeRegistry();
-			schReg.register(new Scheme("http", PlainSocketFactory
-					.getSocketFactory(), 80));
-			schReg.register(new Scheme("https", SSLSocketFactory
-					.getSocketFactory(), 443));
-			ClientConnectionManager conMgr = new ThreadSafeClientConnManager(
-					params, schReg);
-
-			return new DefaultHttpClient(conMgr, params);
 		}
 
 		/*

@@ -22,5 +22,6 @@
     <string name="numKills">Number Of Kills: </string>
     <string name="playerType">Player Type:</string>
     <string name="enterTime">Enter time for each Day/Night cycle (in minutes):</string>
+    <string name="dayLen">Length of Each Day/Night Cycle:</string>
 
 </resources>

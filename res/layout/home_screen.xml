@@ -6,10 +6,10 @@
     tools:context=".HomeActivity" >
     
      <LinearLayout
-        android:id="@+id/tableRow9"
-        android:layout_width="0dp"
-        android:layout_height="0dp" 
-        android:layout_weight="60">
+         android:id="@+id/tableRow9"
+         android:layout_width="0dp"
+         android:layout_height="0dp"
+         android:layout_weight="40" >
     
 	    <ImageView
 	        android:id="@+id/dayNightCycle"
@@ -25,9 +25,13 @@
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_weight="3" >
 
-        <TextView
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,12 +43,44 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/username" />
+        </LinearLayout>
+
+        
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" >
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dayLen" />
+
+        <TextView
+            android:id="@+id/dayLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/username" />
+        </LinearLayout>
     </TableRow>
 
     <TableRow
         android:id="@+id/tableRow2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:layout_weight="3">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/textView2"
@@ -58,12 +94,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/numDaysAlive" />
+        </LinearLayout>
     </TableRow>
 
-    <TableRow
+ 	<TableRow
         android:id="@+id/tableRow3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_weight="3" >
+        
+ 	    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/textView3"
@@ -77,12 +119,33 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/TimeOfDay" />
+        </LinearLayout>
     </TableRow>
+    
+     <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" >
+ 	    
+         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+        </TableRow>
 
     <TableRow
         android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/playerList"
@@ -96,7 +159,8 @@
     <TableRow
         android:id="@+id/tableRow6"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/stats"
@@ -108,24 +172,25 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow4"
+        android:id="@+id/tableRow7"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill" >
+        android:layout_height="wrap_content" 
+        android:layout_weight="1">
 
-        <Button
+            <Button
             android:id="@+id/newGame"
-            android:layout_width="wrap_content"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="clip_horizontal"
+            android:layout_weight="1"
             android:text="@string/newGame" />
-
-        <Button
+            
+             <Button
             android:id="@+id/logout"
-            android:layout_width="wrap_content"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="clip_horizontal"
+            android:layout_weight="1"
             android:text="@string/logout" />
+
     </TableRow>
 
 
