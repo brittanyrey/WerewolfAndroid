@@ -6,8 +6,6 @@
     
     <!-- username large at top. Stats for: /n Username
     total kills
-    werewolf/townsperson
-    total days alive
     voted on
       -->
       
@@ -51,16 +49,61 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="@string/playerType" />
 
         <TextView
             android:id="@+id/playerType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:layout_gravity="right"
             android:text="@string/playerType" />
     </TableRow>
+    
+        <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView77"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/playerStatus" />
+
+        <TextView
+            android:id="@+id/playerStatus"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/playerType" />
+    </TableRow>
+    
    
+     <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView97"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:text="@string/score" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/numKills" />
+    </TableRow>
+    
     <TableRow
         android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
@@ -68,6 +111,7 @@
 
         <TextView
             android:id="@+id/textView3"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/numKills" />
@@ -75,10 +119,16 @@
         <TextView
             android:id="@+id/numberOfKills"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/numKills" />
     </TableRow>
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/werewolflogo" />
 
 </LinearLayout>

@@ -35,6 +35,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -56,12 +57,13 @@ public class RegisterActivity extends Activity {
 	private String lastName;
 	private String id;
 	private String imageURL;
-	private String isAdmin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_screen);
+		
+		//TODO MAKE IMG DO SOMEHING.... 
 
 		usernameText = (EditText) findViewById(R.id.username);
 		passwordText = (EditText) findViewById(R.id.password);
@@ -76,24 +78,32 @@ public class RegisterActivity extends Activity {
 		} else {
 			username = savedInstanceState.getString("username");
 		}
-
+		
 		registerButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				System.out.println("set up");
 				AsyncTaskRunner runner = new AsyncTaskRunner();
 				runner.execute();
-				saveUser(v);
-				
-				Intent intent = new Intent (getApplicationContext(), HomeScreenActivity.class);
-				intent.putExtra("username", usernameText.getText().toString());
-				intent.putExtra("password", passwordText.getText().toString());
-				intent.putExtra("isAdmin", true); //TODO get from response + isWerewolf
+				//saveUser(v);
+				Intent intent = new Intent (getApplicationContext(), LoginActivity.class);
 				finish();
 			    startActivity(intent);
 				
 			}
 		});
 	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	Intent intent = new Intent (getApplicationContext(), LoginActivity.class);
+			finish();
+		    startActivity(intent);
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
+
 
 	private void saveUser(View v) {
 		// this is for error handling
@@ -115,19 +125,6 @@ public class RegisterActivity extends Activity {
 		 */
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putString("username", username);
-	}
-
 	private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
 		private String resp;
@@ -140,9 +137,13 @@ public class RegisterActivity extends Activity {
 			firstName = firstNameText.getText().toString();
 			lastName = lastNameText.getText().toString();
 			id = usernameText.getText().toString();
-			hashedPassword = passwordText.getText().toString();
-			imageURL = "http://i44.tinypic.com/9u3j4o.jpg";
-			isAdmin = "true";
+			try {
+				hashedPassword = Hasher.md5(passwordText.getText().toString());
+				System.out.println(hashedPassword);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			imageURL = "http://i44.tinypic.com/9u3j4o.jpg"; //TODO FIX THIS
 
 			String data = "";
 			try {
@@ -164,7 +165,7 @@ public class RegisterActivity extends Activity {
 						+ URLEncoder.encode(imageURL, "UTF-8");
 
 				data += "&" + URLEncoder.encode("isAdmin", "UTF-8") + "="
-						+ URLEncoder.encode(isAdmin, "UTF-8");
+						+ URLEncoder.encode("false", "UTF-8");
 				
 				System.out.println(data);
 

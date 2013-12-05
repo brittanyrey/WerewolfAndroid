@@ -11,6 +11,12 @@
 			android:gravity="center"
             android:text="@string/enterTime" />
 
+    <Button
+        android:id="@+id/killButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/findKillable" />
+
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"

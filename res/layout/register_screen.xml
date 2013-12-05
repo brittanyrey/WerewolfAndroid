@@ -8,20 +8,33 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RegisterActivity" >
-
     <TableRow
+        android:id="@+id/tableRow0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="190dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/register"
+            android:src="@drawable/vinlogo" />
+    </TableRow>
+    
+
+   <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/username" />
-        
+      
         <EditText
             android:id="@+id/username"
+            android:hint="@string/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,19 +42,14 @@
 
     </TableRow>
 
-    <TableRow
+   <TableRow
         android:id="@+id/tableRow2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
         
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password" />
-        
         <EditText
             android:id="@+id/password"
+            android:hint="@string/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -55,14 +63,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
         
-       <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/verifyPassword" />
-        
         <EditText
             android:id="@+id/verifyPassword"
+            android:hint="@string/verifyPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -70,19 +73,15 @@
         
     </TableRow>
 
-    <TableRow
+   <TableRow
         android:id="@+id/tableRow4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
         
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/firstName" />
         
         <EditText
             android:id="@+id/firstName"
+            android:hint="@string/firstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -90,19 +89,15 @@
         
     </TableRow>
     
-    <TableRow
+   <TableRow
         android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-        
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lastName" />
+       
         
         <EditText
             android:id="@+id/lastName"
+            android:hint="@string/lastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

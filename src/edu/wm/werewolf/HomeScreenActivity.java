@@ -73,7 +73,6 @@ public class HomeScreenActivity extends Activity {
 	private boolean isNight;
 	private int numAlivePlayers = 12;
 	private int numWerewolves = 5;
-	private boolean isWerewolf;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +84,6 @@ public class HomeScreenActivity extends Activity {
 			username = extras.getString("username");
 			password = extras.getString("password");
 			isAdmin = extras.getBoolean("isAdmin");
-			isWerewolf = extras.getBoolean("isWerewolf");
 		}
 
 		usernameText = (TextView) findViewById(R.id.username);
@@ -115,7 +113,6 @@ public class HomeScreenActivity extends Activity {
 
 		logOutButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				//TODO look up how to logout
 				System.out.println("log out");
 				Intent intent = new Intent(getApplicationContext(),
 						LoginActivity.class);
@@ -130,7 +127,7 @@ public class HomeScreenActivity extends Activity {
 						NewGameActivity.class);
 				intent.putExtra("username", username);
 				intent.putExtra("password", password);
-				intent.putExtra("isAdmin", true);//TODO REMOOVE HARDCODE
+				intent.putExtra("isAdmin", isAdmin);
 				startActivity(intent);
 			}
 		});
@@ -141,7 +138,7 @@ public class HomeScreenActivity extends Activity {
 						StatsActivity.class);
 				intent.putExtra("username", username);
 				intent.putExtra("password", password);
-				intent.putExtra("isAdmin", true);//TODO REMOOVE HARDCODE
+				intent.putExtra("isAdmin", isAdmin);
 				startActivity(intent);
 			}
 		});
@@ -152,7 +149,7 @@ public class HomeScreenActivity extends Activity {
 						PlayerListActivity.class);
 				intent.putExtra("username", username);
 				intent.putExtra("password", password);
-				intent.putExtra("isAdmin", true);//TODO REMOOVE HARDCODE
+				intent.putExtra("isAdmin", isAdmin);
 				startActivity(intent);
 			}
 		});
@@ -173,23 +170,31 @@ public class HomeScreenActivity extends Activity {
 			public void run() {
 				
 				   try {
-					 //TODO: ADD NUM of Alive Players + num of Werewolfs
 			            DataLoader dl = new DataLoader();
-			            String url = "http://mighty-sea-1005.herokuapp.com/isNight";
+			            String url = "http://mighty-sea-1005.herokuapp.com/getStatus";
 			            HttpResponse response = dl.secureLoadData(url); 
 
 			            HttpEntity responseEntity = response.getEntity();
 						String content = EntityUtils.toString(responseEntity);
 						List <String> responseInfo = Arrays.asList(content.split("\\s*,\\s*"));
+						// error: alivePlayers == werewolves
+						
+						System.out.println(content);
 
-						//TODO FIX INDICES
-						String isNighttime = responseInfo.get(1);
 						String numOfDaysString = responseInfo.get(0);
-						//String dayLengthString = responseInfo.get(2);
-						isNighttime = isNighttime.substring(8, isNighttime.length()-1);
-						isNight = Boolean.parseBoolean(isNighttime);
+						String numOfWerewolves = responseInfo.get(1);
+						String numAlive = responseInfo.get(2);
+						String dayLengthString = responseInfo.get(3);
+						String isNighttime = responseInfo.get(4);
+						
 						numDays = numOfDaysString.substring(11, numOfDaysString.length()-2);
-						//dayLength = dayLengthString.substring(10, dayLengthString.length()-1);
+						numWerewolves = Integer.parseInt(numOfWerewolves.substring(15,numOfWerewolves.length()-2));
+						numAlivePlayers = Integer.parseInt(numAlive.substring(13, numAlive.length()-2));
+						dayLength = String.valueOf(Integer.parseInt(dayLengthString.substring(16, dayLengthString.length()-2))/60000) 
+								+ " minute(s)";
+						isNight = Boolean.parseBoolean(isNighttime.substring(8, isNighttime.length()-1));
+						System.out.println(numDays + " " + isNight + " " + numWerewolves + " " + numAlivePlayers + " " +
+									dayLength);
 			        } catch (Exception e) {
 			            e.printStackTrace();
 			        }

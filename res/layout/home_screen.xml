@@ -41,6 +41,8 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginLeft="159dp"
             android:layout_gravity="right"
             android:text="@string/username" />
         </LinearLayout>
@@ -68,6 +70,8 @@
             android:id="@+id/dayLength"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginLeft="21dp"
             android:layout_gravity="right"
             android:text="@string/username" />
         </LinearLayout>
@@ -86,6 +90,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="left"
             android:text="@string/numDaysAlive" />
 
         <TextView
@@ -93,6 +98,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:textStyle="bold"
+            android:layout_marginLeft="89dp"
             android:text="@string/numDaysAlive" />
         </LinearLayout>
     </TableRow>
@@ -118,6 +125,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginLeft="148dp"
+            android:textStyle="bold"
             android:text="@string/TimeOfDay" />
         </LinearLayout>
     </TableRow>
@@ -136,6 +145,7 @@
             android:id="@+id/progressBar1"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="300dp"
+            android:layout_marginLeft="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />
         </LinearLayout>
