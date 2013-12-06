@@ -1,14 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <!-- username large at top. Stats for: /n Username
-    total kills
-    voted on
-      -->
-      
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
@@ -18,26 +12,23 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/statsTitle" 
-            android:textSize="35sp"
-            android:gravity="center"/>
-
+            android:gravity="center"
+            android:text="@string/statsTitle"
+            android:textSize="35sp" />
     </TableRow>
 
-   <TableRow
+    <TableRow
         android:id="@+id/tableRow2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-      
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/username"
-            android:textSize="35sp"
-            android:gravity="center" />
-
+            android:textSize="35sp" />
     </TableRow>
 
     <TableRow
@@ -49,19 +40,19 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/playerType" />
+            android:text="@string/playerType"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/playerType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:layout_gravity="right"
-            android:text="@string/playerType" />
+            android:text="@string/playerType"
+            android:textSize="20sp" />
     </TableRow>
-    
-        <TableRow
+
+    <TableRow
         android:id="@+id/tableRow8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
@@ -70,20 +61,19 @@
             android:id="@+id/textView77"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/playerStatus" />
+            android:text="@string/playerStatus"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/playerStatus"
             android:layout_width="wrap_content"
-            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="@string/playerType" />
+            android:text="@string/playerType"
+            android:textSize="20sp" />
     </TableRow>
-    
-   
-     <TableRow
+
+    <TableRow
         android:id="@+id/tableRow6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
@@ -91,19 +81,19 @@
         <TextView
             android:id="@+id/textView97"
             android:layout_width="wrap_content"
-            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="@string/score" />
+            android:text="@string/score"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/score"
             android:layout_width="wrap_content"
-            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="@string/numKills" />
+            android:text="@string/numKills"
+            android:textSize="20sp" />
     </TableRow>
-    
+
     <TableRow
         android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
@@ -111,18 +101,18 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/numKills" />
+            android:text="@string/numKills"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/numberOfKills"
             android:layout_width="wrap_content"
-            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="@string/numKills" />
+            android:text="@string/numKills"
+            android:textSize="20sp" />
     </TableRow>
 
     <ImageView

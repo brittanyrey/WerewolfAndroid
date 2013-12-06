@@ -21,40 +21,46 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int daytime=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int nighttime=0x7f020002;
-        public static final int vinlogo=0x7f020003;
-        public static final int werewolfcircle=0x7f020004;
-        public static final int werewolflogo=0x7f020005;
-        public static final int werewolflogo2=0x7f020006;
+        public static final int cone=0x7f020000;
+        public static final int cube=0x7f020001;
+        public static final int daytime=0x7f020002;
+        public static final int doublepyramid=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int nighttime=0x7f020005;
+        public static final int pyramid=0x7f020006;
+        public static final int vinlogo=0x7f020007;
+        public static final int werewolfcircle=0x7f020008;
+        public static final int werewolflogo=0x7f020009;
+        public static final int werewolflogo2=0x7f02000a;
     }
     public static final class id {
-        public static final int TableLayout1=0x7f080019;
-        public static final int action_settings=0x7f08002d;
-        public static final int createButton=0x7f08001d;
+        public static final int TableLayout1=0x7f08001a;
+        public static final int action_settings=0x7f080030;
+        public static final int createButton=0x7f08001e;
         public static final int dayLength=0x7f080007;
         public static final int dayNightCycle=0x7f080001;
-        public static final int duration=0x7f080020;
-        public static final int firstName=0x7f080023;
-        public static final int imageView1=0x7f08001b;
-        public static final int instructions=0x7f080017;
-        public static final int killButton=0x7f080021;
-        public static final int lastName=0x7f080024;
-        public static final int listView1=0x7f080018;
-        public static final int loginButton=0x7f08001e;
-        public static final int logout=0x7f080016;
+        public static final int duration=0x7f080021;
+        public static final int firstName=0x7f080024;
+        public static final int gallery1=0x7f080027;
+        public static final int imageView1=0x7f08001c;
+        public static final int instructions=0x7f080018;
+        public static final int killButton=0x7f080022;
+        public static final int lastName=0x7f080025;
+        public static final int listView1=0x7f080019;
+        public static final int loginButton=0x7f08001f;
+        public static final int logout=0x7f080017;
         public static final int newGame=0x7f080015;
         public static final int numDaysAlive=0x7f08000a;
-        public static final int numberOfKills=0x7f08002c;
-        public static final int password=0x7f08001c;
+        public static final int numberOfKills=0x7f08002f;
+        public static final int password=0x7f08001d;
         public static final int playerList=0x7f080011;
-        public static final int playerStatus=0x7f080029;
-        public static final int playerType=0x7f080026;
+        public static final int playerStatus=0x7f08002c;
+        public static final int playerType=0x7f080029;
         public static final int progressBar1=0x7f08000f;
-        public static final int score=0x7f08002b;
+        public static final int reset=0x7f080016;
+        public static final int score=0x7f08002e;
         public static final int stats=0x7f080013;
-        public static final int tableRow0=0x7f08001a;
+        public static final int tableRow0=0x7f08001b;
         public static final int tableRow1=0x7f080002;
         public static final int tableRow10=0x7f080005;
         public static final int tableRow2=0x7f080008;
@@ -63,19 +69,20 @@ public final class R {
         public static final int tableRow5=0x7f080010;
         public static final int tableRow6=0x7f080012;
         public static final int tableRow7=0x7f080014;
-        public static final int tableRow8=0x7f080027;
+        public static final int tableRow8=0x7f08002a;
         public static final int tableRow9=0x7f080000;
         public static final int textView1=0x7f080003;
         public static final int textView10=0x7f080006;
         public static final int textView2=0x7f080009;
         public static final int textView3=0x7f08000c;
-        public static final int textView4=0x7f080025;
-        public static final int textView77=0x7f080028;
-        public static final int textView97=0x7f08002a;
-        public static final int timeCycle=0x7f08001f;
+        public static final int textView4=0x7f080028;
+        public static final int textView77=0x7f08002b;
+        public static final int textView97=0x7f08002d;
+        public static final int textVieww=0x7f080026;
+        public static final int timeCycle=0x7f080020;
         public static final int timeOfDay=0x7f08000d;
         public static final int username=0x7f080004;
-        public static final int verifyPassword=0x7f080022;
+        public static final int verifyPassword=0x7f080023;
     }
     public static final class layout {
         public static final int home_screen=0x7f030000;
@@ -90,6 +97,7 @@ public final class R {
         public static final int main=0x7f070000;
     }
     public static final class string {
+        public static final int Reset=0x7f05001c;
         public static final int TimeOfDay=0x7f050010;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;

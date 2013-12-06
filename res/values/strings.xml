@@ -29,5 +29,6 @@
     <string name="dayLen">Length of Each Day/Night Cycle: </string>
     <string name="score">Score: </string>
     <string name="playerStatus">Player Status: </string>
+    <string name="Reset">Refresh</string>
 
 </resources>

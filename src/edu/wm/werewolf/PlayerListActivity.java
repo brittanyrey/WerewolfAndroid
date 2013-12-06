@@ -99,7 +99,7 @@ public class PlayerListActivity extends Activity {
 		if (isNight()) {
 				instructions.setText("Below is a list of all players.");
 				if (isWerewolf){
-					//killButton.setVisibility(0);//visible
+					killButton.setVisibility(0);//visible
 					System.out.println("button visible");
 				}
 				else{
@@ -175,7 +175,7 @@ public class PlayerListActivity extends Activity {
 					HttpClient client = new DefaultHttpClient();
 					HttpGet request = new HttpGet();
 					request.setURI(new URI(
-							"http://mighty-sea-1005.herokuapp.com/isNight"));
+							"http://mighty-sea-1005.herokuapp.com/getStatus"));
 					request.addHeader(BasicScheme.authenticate(
 							new UsernamePasswordCredentials("brittany", "yes"),
 							"UTF-8", false));
@@ -186,8 +186,7 @@ public class PlayerListActivity extends Activity {
 					List <String> responseInfo = Arrays.asList(content.split("\\s*,\\s*"));
 
 					String isNighttime = responseInfo.get(4);
-					isNighttime = isNighttime.substring(8, isNighttime.length()-1);
-					isNight = Boolean.parseBoolean(isNighttime);
+					isNight = Boolean.parseBoolean(isNighttime.substring(8, isNighttime.length()-1));
 					
 				} catch (URISyntaxException e) {
 					e.printStackTrace();
@@ -244,9 +243,7 @@ public class PlayerListActivity extends Activity {
 		}
 	}
 	
-	private class AsyncVoteRunner extends AsyncTask<String, String, String> {
-
-		
+	private class AsyncVoteRunner extends AsyncTask<String, String, String> {	
 
 		@Override
 		protected String doInBackground(String... params) {
@@ -286,58 +283,6 @@ public class PlayerListActivity extends Activity {
 			}
 			System.out.println("response :" + responseSTR);
 			return responseSTR;
-			
-			////??????????????????????????????//////////
-			
-			
-//			// Create a new HttpClient and Post Header
-//			HttpClient httpclient = new DefaultHttpClient();
-//			HttpPost httppost = new HttpPost(
-//					"http://mighty-sea-1005.herokuapp.com/players/vote");
-//
-//			String responseBody = "";
-//
-//			HttpResponse response = null;
-//
-//			try {
-//
-//				String base64EncodedCredentials = "Basic "
-//						+ Base64.encodeToString(
-//								("brittany" + ":" + "yes").getBytes(),
-//								// (username + ":" + password).getBytes(),
-//								Base64.NO_WRAP);
-//
-//				httppost.setHeader("Authorization", base64EncodedCredentials);
-//
-//				httppost.setHeader(HTTP.CONTENT_TYPE, "application/json");
-//
-//				JSONObject obj = new JSONObject();
-//
-//				obj.put("voterID", username);
-//				obj.put("suspectID", playerToActOn);
-//
-//				httppost.setEntity(new StringEntity(obj.toString(), "UTF-8"));
-//
-//				// Execute HTTP Post Request
-//				response = httpclient.execute(httppost);
-//
-//				if (response.getStatusLine().getStatusCode() == 200) {
-//					Log.d("response ok", "ok response :/");
-//				} else {
-//					Log.d("response not ok", "Something went wrong :/");
-//				}
-//
-//				responseBody = EntityUtils.toString(response.getEntity());
-//
-//			} catch (ClientProtocolException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			} catch (JSONException e) {
-//				e.printStackTrace();
-//			}
-//
-//			return responseBody;
 		}
 
 		@Override

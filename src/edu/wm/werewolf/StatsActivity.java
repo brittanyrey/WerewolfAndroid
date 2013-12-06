@@ -39,6 +39,8 @@ import edu.wm.werewolf.HomeScreenActivity.CustomSSLSocketFactory;
 import edu.wm.werewolf.HomeScreenActivity.CustomX509TrustManager;
 import edu.wm.werewolf.HomeScreenActivity.DataLoader;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -57,7 +59,7 @@ public class StatsActivity extends Activity {
 	private int score = 5;
 	private boolean isWerewolf = false;
 	private boolean isDead = false;
-	private String image = "the";
+	private String image = "5";
 	
 	private TextView usernameText;
 	private TextView playerTypeText;
@@ -65,6 +67,8 @@ public class StatsActivity extends Activity {
 	private TextView scoreText;
 	private TextView numKillsText;
 	private ImageView img;
+	
+	private boolean success = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,17 +89,39 @@ public class StatsActivity extends Activity {
 		numKillsText = (TextView) findViewById(R.id.numberOfKills);
 		img = (ImageView) findViewById(R.id.imageView1);
 		
-		getStats();
-		
+		if (getStats()){
+			setData();
+		}
+		else{
+			AlertDialog.Builder builder = new AlertDialog.Builder(StatsActivity.this);
+			builder.setIcon(android.R.drawable.ic_dialog_alert)
+					.setTitle("Error")
+					.setMessage(
+							"Because you are not currently in a game, stats could not be collected.")
+							
+					.setNeutralButton("Close",
+							new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+								finish();
+						}
+					})
+					//.setNegativeButton("No", null).
+					.show();
+			// finish();
+		}
+	}
+	
+	private void setData(){
 		usernameText.setText(username);
 		playerTypeText.setText(isWerewolf ? " Werewolf" : " Townsperson");
 		playerStatusText.setText(isDead ? " Dead" : " Alive");
-		scoreText.setText(score);
-		numKillsText.setText(numKills);
-		img.setImageResource(R.drawable.nighttime);	//TODO actual avatar
+		scoreText.setText(" "+score);
+		numKillsText.setText(" "+numKills);
+		img.setImageResource(image.startsWith("http") ? R.drawable.cube :  Integer.parseInt(image));
 	}
 	
-	private void getStats() {
+	private boolean getStats() {
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -123,11 +149,13 @@ public class StatsActivity extends Activity {
 						isWerewolf = Boolean.parseBoolean(werewolf.substring(11));
 						isDead = Boolean.parseBoolean(dead.substring(7, dead.length()-1));
 						numKills = Integer.parseInt(numOfKills.substring(11));
-						image = imageS.substring(8);
+						image = imageS.substring(9,imageS.length()-1);
 						System.out.println(score + " " + isWerewolf + " " + isDead + " " + numKills + " " +
 									image);
+						success = true;
 			        } catch (Exception e) {
 			            e.printStackTrace();
+			            success = false;
 			        }
 			}
 		});
@@ -138,6 +166,7 @@ public class StatsActivity extends Activity {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		return success;
 	}
 	
 	public class DataLoader {

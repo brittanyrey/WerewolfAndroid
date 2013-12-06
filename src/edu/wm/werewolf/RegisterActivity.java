@@ -34,12 +34,20 @@ import org.apache.http.protocol.HTTP;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class RegisterActivity extends Activity {
 
@@ -49,7 +57,8 @@ public class RegisterActivity extends Activity {
 	private EditText firstNameText;
 	private EditText lastNameText;
 	private Button registerButton;
-
+	private TextView text;
+	
 	private String username;
 	private String password;
 	private String hashedPassword;
@@ -58,52 +67,71 @@ public class RegisterActivity extends Activity {
 	private String id;
 	private String imageURL;
 
+	ImageView selectedImage;
+	private Integer[] mImageIds = { R.drawable.cube, R.drawable.cone,
+			R.drawable.doublepyramid, R.drawable.pyramid };
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_screen);
-		
-		//TODO MAKE IMG DO SOMEHING.... 
 
 		usernameText = (EditText) findViewById(R.id.username);
 		passwordText = (EditText) findViewById(R.id.password);
 		verifyPasswordText = (EditText) findViewById(R.id.verifyPassword);
 		firstNameText = (EditText) findViewById(R.id.firstName);
 		lastNameText = (EditText) findViewById(R.id.lastName);
-
+		text = (TextView) findViewById(R.id.textVieww);
 		registerButton = (Button) findViewById(R.id.createButton);
+		
+		text.setText("Choose an avatar.");
 
 		if (savedInstanceState == null) {
 			username = "";
 		} else {
 			username = savedInstanceState.getString("username");
 		}
-		
+
 		registerButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				System.out.println("set up");
 				AsyncTaskRunner runner = new AsyncTaskRunner();
 				runner.execute();
-				//saveUser(v);
-				Intent intent = new Intent (getApplicationContext(), LoginActivity.class);
+				// saveUser(v);
+				Intent intent = new Intent(getApplicationContext(),
+						LoginActivity.class);
 				finish();
-			    startActivity(intent);
-				
+				startActivity(intent);
+
+			}
+		});
+
+		Gallery gallery = (Gallery) findViewById(R.id.gallery1);
+		selectedImage = (ImageView) findViewById(R.id.imageView1);
+		gallery.setSpacing(1);
+		gallery.setAdapter(new GalleryImageAdapter(this));
+
+		// clicklistener for Gallery
+		gallery.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
+				imageURL = mImageIds[position].toString();
+				selectedImage.setImageResource(mImageIds[position]);
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-	    if (keyCode == KeyEvent.KEYCODE_BACK) {
-	    	Intent intent = new Intent (getApplicationContext(), LoginActivity.class);
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			Intent intent = new Intent(getApplicationContext(),
+					LoginActivity.class);
 			finish();
-		    startActivity(intent);
-	        return true;
-	    }
-	    return super.onKeyDown(keyCode, event);
+			startActivity(intent);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
-
 
 	private void saveUser(View v) {
 		// this is for error handling
@@ -143,7 +171,6 @@ public class RegisterActivity extends Activity {
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			imageURL = "http://i44.tinypic.com/9u3j4o.jpg"; //TODO FIX THIS
 
 			String data = "";
 			try {
@@ -157,23 +184,22 @@ public class RegisterActivity extends Activity {
 
 				data += "&" + URLEncoder.encode("id", "UTF-8") + "="
 						+ URLEncoder.encode(id, "UTF-8");
-				
-				data += "&" + URLEncoder.encode("hashedPassword", "UTF-8") + "="
-						+ URLEncoder.encode(hashedPassword, "UTF-8");
+
+				data += "&" + URLEncoder.encode("hashedPassword", "UTF-8")
+						+ "=" + URLEncoder.encode(hashedPassword, "UTF-8");
 
 				data += "&" + URLEncoder.encode("imageURL", "UTF-8") + "="
 						+ URLEncoder.encode(imageURL, "UTF-8");
 
 				data += "&" + URLEncoder.encode("isAdmin", "UTF-8") + "="
 						+ URLEncoder.encode("false", "UTF-8");
-				
+
 				System.out.println(data);
 
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
 
-			
 			String text = "";
 			BufferedReader reader = null;
 
@@ -258,4 +284,45 @@ public class RegisterActivity extends Activity {
 		}
 	}
 
+	public class GalleryImageAdapter extends BaseAdapter 
+	{
+	    private Context mContext;
+
+	    private Integer[] mImageIds = { R.drawable.cube, R.drawable.cone,
+				R.drawable.doublepyramid, R.drawable.pyramid };
+
+	    public GalleryImageAdapter(Context context) 
+	    {
+	        mContext = context;
+	    }
+
+	    public int getCount() {
+	        return mImageIds.length;
+	    }
+
+	    public Object getItem(int position) {
+	        return position;
+	    }
+
+	    public long getItemId(int position) {
+	        return position;
+	    }
+
+
+	   @Override
+	    public View getView(int index, View view, ViewGroup viewGroup) 
+	    {
+	        // TODO Auto-generated method stub
+	        ImageView i = new ImageView(mContext);
+
+	        i.setImageResource(mImageIds[index]);
+	        i.setLayoutParams(new Gallery.LayoutParams(200, 200));
+	    
+	        i.setScaleType(ImageView.ScaleType.FIT_XY);
+
+	        return i;
+	    }
+	}
+
+	
 }
